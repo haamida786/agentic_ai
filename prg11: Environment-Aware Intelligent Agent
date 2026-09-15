@@ -1,0 +1,21 @@
+# Environment-Aware Intelligent Agent
+
+def environment_agent(condition):
+    if condition.lower() == "rain":
+        return "Take an Umbrella"
+    elif condition.lower() == "sunny":
+        return "Wear Sunglasses"
+    elif condition.lower() == "cold":
+        return "Wear a Jacket"
+    elif condition.lower() == "hot":
+        return "Drink Water and Stay Cool"
+    else:
+        return "No Specific Action"
+
+
+# Main Program
+condition = input("Enter the Environment (Rain/Sunny/Cold/Hot): ")
+action = environment_agent(condition)
+
+print("Environment :", condition)
+print("Agent Action:", action)
