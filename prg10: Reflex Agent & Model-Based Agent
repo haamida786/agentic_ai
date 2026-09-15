@@ -1,0 +1,39 @@
+```python
+# Reflex Agent and Model-Based Agent
+
+# Reflex Agent
+def reflex_agent(room_status):
+    if room_status == "Dirty":
+        return "Clean the room"
+    else:
+        return "No action needed"
+
+
+# Model-Based Agent
+class ModelBasedAgent:
+    def __init__(self):
+        self.memory = {}
+
+    def update(self, room, status):
+        self.memory[room] = status
+
+    def act(self, room):
+        if self.memory[room] == "Dirty":
+            return "Clean the room"
+        else:
+            return "Room is already clean"
+
+
+# Main Program
+print("----- Reflex Agent -----")
+status = input("Enter room status (Clean/Dirty): ")
+print("Action:", reflex_agent(status))
+
+print("\n----- Model-Based Agent -----")
+agent = ModelBasedAgent()
+room = input("Enter room name (A/B): ")
+status = input("Enter room status (Clean/Dirty): ")
+agent.update(room, status)
+print("Memory:", agent.memory)
+print("Action:", agent.act(room))
+```
