@@ -1,0 +1,22 @@
+n = int(input("Enter the number of users: "))
+
+ratings = []
+
+for i in range(n):
+    rating = float(input(f"Enter rating from User {i+1} (1-5): "))
+    ratings.append(rating)
+
+average = sum(ratings) / n
+
+if average >= 4.5:
+    reputation = "Excellent"
+elif average >= 3.5:
+    reputation = "Good"
+elif average >= 2.5:
+    reputation = "Average"
+else:
+    reputation = "Poor"
+
+print("\nRatings:", ratings)
+print("Average Rating:", round(average, 2))
+print("Reputation:", reputation)
