@@ -1,26 +1,60 @@
-import numpy as np 
-class NaiveBayes: 
-def fit(self, X, y): 
-self.classes = np.unique(y) 
-self.mean = np.array([X[y == c].mean(axis=0) for c in self.classes]) 
-self.var = np.array([X[y == c].var(axis=0) for c in self.classes]) 
-self.priors = np.array([X[y == c].shape[0] / float(X.shape[0]) for c in self.classes]) 
-def predict(self, X): 
-preds = [] 
-for x in X: 
-posteriors = [] 
-for idx, c in enumerate(self.classes): 
-prior = np.log(self.priors[idx]) 
-conditional = np.sum(np.log(self._pdf(idx, x))) 
-posteriors.append(prior + conditional) 
-preds.append(self.classes[np.argmax(posteriors)]) 
-return preds 
-def _pdf(self, class_idx, x): 
-mean = self.mean[class_idx] 
-var = self.var[class_idx] 
-return np.exp(-((x - mean) ** 2) / (2 * var)) / np.sqrt(2 * np.pi * var) 
-X = np.array([[1, 2], [2, 3], [3, 4], [10, 11], [11, 12]]) 
-y = np.array([0, 0, 0, 1, 1]) 
-nb = NaiveBayes() 
-nb.fit(X, y) 
-print("Naive Bayes Classification:", nb.predict([[2, 2], [12, 13]]))
+import numpy as np
+
+
+class NaiveBayes:
+    def fit(self, X, y):
+        self.classes = np.unique(y)
+        self.mean = np.array([
+            X[y == c].mean(axis=0) for c in self.classes
+        ])
+        self.var = np.array([
+            X[y == c].var(axis=0) for c in self.classes
+        ])
+        self.priors = np.array([
+            X[y == c].shape[0] / float(X.shape[0])
+            for c in self.classes
+        ])
+
+    def predict(self, X):
+        preds = []
+
+        for x in X:
+            posteriors = []
+
+            for idx, c in enumerate(self.classes):
+                prior = np.log(self.priors[idx])
+                conditional = np.sum(
+                    np.log(self._pdf(idx, x))
+                )
+                posteriors.append(prior + conditional)
+
+            preds.append(self.classes[np.argmax(posteriors)])
+
+        return preds
+
+    def _pdf(self, class_idx, x):
+        mean = self.mean[class_idx]
+        var = self.var[class_idx]
+
+        return np.exp(
+            -((x - mean) ** 2) / (2 * var)
+        ) / np.sqrt(2 * np.pi * var)
+
+
+X = np.array([
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [10, 11],
+    [11, 12]
+])
+
+y = np.array([0, 0, 0, 1, 1])
+
+nb = NaiveBayes()
+nb.fit(X, y)
+
+print(
+    "Naive Bayes Classification:",
+    nb.predict([[2, 2], [12, 13]])
+)
