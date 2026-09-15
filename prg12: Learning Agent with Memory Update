@@ -1,0 +1,40 @@
+class LearningAgent:
+    def __init__(self):
+        self.memory = {}
+
+    def learn(self, situation, action):
+        self.memory[situation] = action
+        print("Memory Updated!")
+
+    def recall(self, situation):
+        if situation in self.memory:
+            print("Known Action:", self.memory[situation])
+        else:
+            print("Situation not found in memory.")
+
+
+# Main Program
+agent = LearningAgent()
+
+while True:
+    print("\n1. Learn")
+    print("2. Recall")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        situation = input("Enter Situation: ")
+        action = input("Enter Action: ")
+        agent.learn(situation, action)
+
+    elif choice == "2":
+        situation = input("Enter Situation: ")
+        agent.recall(situation)
+
+    elif choice == "3":
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid Choice")
