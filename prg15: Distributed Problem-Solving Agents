@@ -1,0 +1,28 @@
+class Agent:
+    def __init__(self, name):
+        self.name = name
+
+    def solve(self, numbers):
+        result = sum(numbers)
+        print(f"{self.name} processed {numbers} -> Sum = {result}")
+        return result
+
+
+# Main Program
+numbers = [10, 20, 30, 40, 50, 60]
+
+# Divide the task into two parts
+part1 = numbers[:3]
+part2 = numbers[3:]
+
+agent1 = Agent("Agent A")
+agent2 = Agent("Agent B")
+
+# Agents solve their subtasks
+result1 = agent1.solve(part1)
+result2 = agent2.solve(part2)
+
+# Combine results
+final_result = result1 + result2
+
+print("\nFinal Sum =", final_result)
