@@ -1,18 +1,27 @@
-# Goal-Based Autonomous Agent 
-def goal_based_agent(start, goal): 
-current = start
-print("Start State :", current) 
-print("Goal State  :", goal) 
-print("\nPath:") 
-while current != goal: 
-print(current, end=" -> ") 
-if current < goal: 
-current += 1 
-else: 
-current -= 1 
-print(goal) 
-print("\nGoal Reached Successfully!") 
-# Main Program 
-start = int(input("Enter Start State: ")) 
-goal = int(input("Enter Goal State: ")) 
+# Goal-Based Autonomous Agent
+
+def goal_based_agent(start, goal):
+    current = start
+
+    print("Start State :", current)
+    print("Goal State  :", goal)
+
+    print("\nPath:")
+
+    while current != goal:
+        print(current, end=" -> ")
+
+        if current < goal:
+            current += 1
+        else:
+            current -= 1
+
+    print(goal)
+    print("\nGoal Reached Successfully!")
+
+
+# Main Program
+start = int(input("Enter Start State: "))
+goal = int(input("Enter Goal State: "))
+
 goal_based_agent(start, goal)
