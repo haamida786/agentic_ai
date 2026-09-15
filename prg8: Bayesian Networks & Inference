@@ -1,0 +1,19 @@
+# Bayesian Network & Inference (Simple Example) 
+# Prior probabilities 
+P_Rain = 0.2 
+P_NoRain = 0.8 
+# Conditional probabilities 
+P_WetGrass_given_Rain = 0.9 
+P_WetGrass_given_NoRain = 0.1 
+# Total probability of Wet Grass 
+P_WetGrass = ( 
+P_WetGrass_given_Rain * P_Rain + 
+P_WetGrass_given_NoRain * P_NoRain 
+) 
+# Bayes' Theorem 
+P_Rain_given_WetGrass = ( 
+P_WetGrass_given_Rain * P_Rain 
+) / P_WetGrass 
+print("Probability of Rain =", P_Rain) 
+print("Probability of Wet Grass =", round(P_WetGrass, 2)) 
+print("Probability of Rain given Wet Grass =",round(P_Rain_given_WetGrass, 2))
